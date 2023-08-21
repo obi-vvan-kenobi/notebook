@@ -76,7 +76,8 @@ class ListNote:
 
             view.clear()
             if page:
-                response = input('Нажмите "N[n]", чтобы отобразить следующую страницу\n')
+                response = input(
+                    'Введите "N[n]", чтобы отобразить следующую страницу, для выхода любую другую клавишу\n')
                 if not re.search(r'[Nn]', response):
                     break
 
@@ -95,5 +96,5 @@ class SearchNote:
         """
         search_result = storage.search(other)
 
-        return ('{}: {}\n' * (len(search_result) // 2)).format(
+        return ('\n' + '{}: {}\n' * (len(search_result) // 2)).format(
             *search_result) if search_result else 'По Вашему запросу ничего найти не удалось'

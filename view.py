@@ -78,9 +78,9 @@ def get_new_note_data() -> Record:
 
     :return: экземпляр Record
     """
-    record = Record(surname=get_user_input('Фамилия'), name=get_user_input('Имя'),
-                    patronymic=get_user_input('Отчество'), organization=get_user_input('Название организаци'),
-                    office_number=get_user_input('Рабочий телефон'), mobile_phone=get_user_input('Личный телефон'))
+    record = Record(surname=get_user_input('Фамилия:'), name=get_user_input('Имя:'),
+                    patronymic=get_user_input('Отчество:'), organization=get_user_input('Название организаци:'),
+                    office_number=get_user_input('Рабочий телефон:'), mobile_phone=get_user_input('Личный телефон:'))
     return record
 
 
@@ -100,10 +100,10 @@ def get_edit_id() -> Tuple[str, Record]:
 
     :return:
     """
-    id_ = input('Введите порядковый номер записи, которую хотите изменить\n')
+    id_ = input('Введите порядковый номер записи, которую хотите изменить:\n')
     old_data = ListNote().execute(id_)[1]
     print(' '.join(old_data.__dict__.values()))
-    print('Впишите измененные данные в нужные поля, остальные пропускайте, нажимая "Enter"\n')
+    print('\nВпишите измененные данные в нужные поля, остальные пропускайте, нажимая "Enter"\n')
     edit_data = get_new_note_data()
     new_data = Record(surname=edit_data.surname or old_data.surname,
                       name=edit_data.name or old_data.name,
